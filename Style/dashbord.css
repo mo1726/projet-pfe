@@ -1,0 +1,364 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300&family=Roboto:wght@300&display=swap');
+@import url(https://db.onlinewebfonts.com/c/22a306fc481736d9d0d75772b51006b1?family=Inknut+Antiqua);
+@import url(https://db.onlinewebfonts.com/c/2da952d097bffd198ec0f0aa3fdd6804?family=JejuHallasan);
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+
+}
+body{
+    background-color: #00aaff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#checkbox {
+    display: none;
+  }
+  
+  .toggle {
+    position: relative;
+    width: 30px;
+    height: 35px;
+    
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: .5s;
+    display: none;
+  }
+  
+  .bars {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    border-radius: 4px;
+  }
+  
+  #bar2 {
+    transition-duration: .8s;
+  }
+  
+  #bar1,#bar3 {
+    width: 70%;
+  }
+  
+  #checkbox:checked + .toggle .bars {
+    position: absolute;
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle #bar2 {
+    transform: scaleX(0);
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle #bar1 {
+    width: 100%;
+    transform: rotate(45deg);
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle #bar3 {
+    width: 100%;
+    transform: rotate(-45deg);
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle {
+    transition-duration: .5s;
+    transform: rotate(180deg);
+  }
+.nav-bar {
+    background-color: #595959;
+    width: 15%;
+    height: 100vh;
+    border: none;
+    
+}
+.nav-logo {
+    width: 100;
+    margin-left: 15%;
+    
+    
+}
+ul{
+    list-style: none;
+    margin-left: 0%;
+    
+}
+li{
+    margin-bottom: 10%;
+}
+li a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: larger;
+    margin-bottom: 5%;
+    padding: 5%;
+    padding-right: 5%;
+    margin: 0%;
+}
+
+.active {
+    background-color:#2D2D2D ;
+    
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: 0%;
+}
+.disactive:hover{
+    color: black;
+
+}
+.hedbar{
+    background-color: #d7d7d7;
+    
+    width: 100%;
+    height: 10vh;
+   
+}
+.hedbar h3{
+    margin-top: 15;
+    margin-left: 10;
+}
+.hedbar h4{
+text-align: center;
+margin-top: -22;
+}
+
+.contner{
+    display: flex;
+}
+.profile img{
+    width: 40;
+    height: 40;
+    border-radius: 50px;
+    float: right;
+    margin-top: -30;
+    margin-right: 10;
+}
+.card-contenar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 84%;
+    margin-top: -40%;
+    float: right;
+    
+}
+
+.card, .card1, .card2 {
+    width: calc(33.33% - 20px);
+    max-width: 300px;
+    height:25vh;
+    margin: 10px;
+    border-radius: 30px;
+    background: #e0e0e0;
+    box-shadow: 15px 15px 30px #bebebe, -15px -15px 30px #ffffff;
+}
+
+.card h1, .card1 h1, .card2 h1 {
+    font-family: "jejuhallasan";
+    margin-left: 20px;
+    position: relative;
+    top: 20%;
+    font-size: 450%;
+}
+
+.card h3, .card1 h3, .card2 h3 {
+    font-family: "inknut antiqua";
+    text-align: center;
+    margin-top: 13%;
+    margin-right: 30%;
+}
+
+.card img, .card1 img, .card2 img {
+    width: 90px;
+    float: right;
+    margin-right: 10px;
+    margin-top: -40px;
+}
+
+.card2 img {
+    width: 70px;
+    float: right;
+    margin-right: 20px;
+    margin-top: -120px;
+}
+.card1 h3{
+    margin-left: 10;
+}
+canvas{
+    width: 20%;
+}
+#livreeChart{
+    
+    margin-left: 170;
+    margin-top: -35%;
+    position: relative;
+    top: 20%;
+}
+
+ /* Your existing CSS code here */
+ @media only screen and (max-width: 925px) {
+    .card h3 {
+       font-size: large;
+       
+    }
+    .card1 h1{
+        margin-top: -10;
+    }
+
+ }
+/* Media query for devices with a maximum width of 768px (typical for tablets) */
+@media only screen and (max-width: 768px) {
+     .nav-bar {
+        width: 100%; /* Make the navigation bar take up full width */
+        height: auto; /* Allow height to adjust based on content */
+        display: flex;
+        flex-direction: column; /* Change the flex direction to column */
+        align-items: center;
+         /* Center items in the column */
+         margin-top: 5.5%;
+    }
+
+    .nav-logo {
+        margin-left: 0; /* Adjust margin for the logo */
+        margin-bottom: 10px; /* Increase margin for spacing */
+    }
+
+    ul {
+        margin-left: 0;
+    }
+
+    li {
+        margin-bottom: 5px; /* Adjust spacing between list items */
+    }
+
+    .active, .disactive {
+        padding: 10px; /* Increase padding for better touch responsiveness */
+    }
+    .hedbar{
+        margin-top: -40%;
+    }
+    .barx{
+        margin-top: -20;
+    }
+
+    .hedbar h3 {
+        margin-left: 40px; /* Adjust margin for the heading in smaller screens */
+    }
+    .contner{
+        display: inline;
+    }
+    .nav-bar ul {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-contenar {
+        margin-top: 40%;
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .card, .card1, .card2 {
+        width: 100%;
+        margin-left: 30%;
+    }
+    .toggle{
+        display: block;
+        position: relative;
+        top: 20;
+        position: relative;
+    width: 25px;
+    height: 25px;
+    
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: .5s;
+    }
+}
+
+/* Media query for devices with a maximum width of 480px (typical for phones) */
+@media only screen and (max-width: 480px) {
+    .nav-bar {
+        width: 100%; /* Make the navigation bar take up full width */
+        height: auto; /* Allow height to adjust based on content */
+        display: flex;
+        flex-direction: column; /* Change the flex direction to column */
+        align-items: center;
+         /* Center items in the column */
+         margin-top: 5.5%;
+    }
+
+    .nav-logo {
+        margin-left: 0; /* Adjust margin for the logo */
+        margin-bottom: 10px; /* Increase margin for spacing */
+    }
+
+    ul {
+        margin-left: 0;
+    }
+
+    li {
+        margin-bottom: 5px; /* Adjust spacing between list items */
+    }
+
+    .active, .disactive {
+        padding: 10px; /* Increase padding for better touch responsiveness */
+    }
+    .hedbar{
+        margin-top: -60%;
+    }
+    .barx{
+        margin-top: -20;
+    }
+
+    .hedbar h3 {
+        margin-left: 40px; /* Adjust margin for the heading in smaller screens */
+    }
+    .contner{
+        display: inline;
+    }
+    .nav-bar ul {
+        width: 100%;
+        text-align: center;
+    }
+
+    .card-contenar {
+        margin-top: 55%;
+        flex-direction: column;
+        width: 100%;
+        margin-right: 10%;
+    }
+
+    .card, .card1, .card2 {
+        width: 100%;
+        margin-left: 30%;
+    }
+    .toggle{
+        display: block;
+        position: relative;
+        top: 20;
+        position: relative;
+    width: 25px;
+    height: 25px;
+    
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: .5s;
+    }
+}

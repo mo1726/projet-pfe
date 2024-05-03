@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inknut+Antiqua:wght@300&family=Roboto:wght@300&display=swap');
+@import url(https://db.onlinewebfonts.com/c/22a306fc481736d9d0d75772b51006b1?family=Inknut+Antiqua);
+@import url(https://db.onlinewebfonts.com/c/2da952d097bffd198ec0f0aa3fdd6804?family=JejuHallasan);
+*{
+    box-sizing: border-box;
+    padding: 0%;
+    margin: 0%;
+
+}
+body{
+    background-color: #00aaff;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+#checkbox {
+    display: none;
+  }
+  
+  .toggle {
+    position: relative;
+    width: 30px;
+    height: 35px;
+    
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: .5s;
+    display: none;
+  }
+  
+  .bars {
+    width: 100%;
+    height: 4px;
+    background-color: black;
+    border-radius: 4px;
+  }
+  
+  #bar2 {
+    transition-duration: .8s;
+  }
+  
+  #bar1,#bar3 {
+    width: 70%;
+  }
+  
+  #checkbox:checked + .toggle .bars {
+    position: absolute;
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle #bar2 {
+    transform: scaleX(0);
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle #bar1 {
+    width: 100%;
+    transform: rotate(45deg);
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle #bar3 {
+    width: 100%;
+    transform: rotate(-45deg);
+    transition-duration: .5s;
+  }
+  
+  #checkbox:checked + .toggle {
+    transition-duration: .5s;
+    transform: rotate(180deg);
+  }
+.nav-bar {
+    background-color: #595959;
+    width: 13%;
+    height: 100vh;
+    border: none;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+}
+.nav-logo {
+    width: 100;
+    margin-left: 15%;
+    
+    
+}
+ul{
+    list-style: none;
+    margin-left: 0%;
+    
+}
+li{
+    margin-bottom: 10%;
+}
+
+li a{
+    color: aliceblue;
+    text-decoration: none;
+    font-size: larger;
+    
+    padding-left: 5%;
+    
+    
+}
+
+.active {
+    background-color:#2D2D2D ;
+    
+    padding-top: 5%;
+    padding-bottom: 5%;
+    
+}
+.disactive:hover{
+    color: black;
+
+}
+.hedbar{
+    background-color: #d7d7d7;
+    margin-left: 13%;
+    width: 100%;
+    height: 10vh;
+   
+}
+
+.hedbar h4{
+text-align: center;
+margin-top: 15;
+}
+.contner{
+    display: flex;
+}
+.profile img{
+    width: 40;
+    height: 40;
+    border-radius: 50px;
+    float: right;
+    margin-top: -30;
+    margin-right: 10;
+}
+
+.table-ram {
+    position: relative;
+    left: 13.5%;
+    width: 86.5%;
+    bottom: 500px;
+}
+
+table {
+    border: 1px solid #000;
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 52%;
+}
+
+th, td {
+    border: 1px solid #000;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #2D2D2D;
+    color: white;
+}
+
+.buttons2{
+  width: 75%;
+  margin-left: 10%;
+}

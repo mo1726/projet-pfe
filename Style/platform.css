@@ -1,0 +1,334 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #61677A;
+    
+    
+}
+.logo{
+    width: 100px !important;
+    margin-left: 20px;
+    margin-top: 10px !important;
+    margin-right: 70px !important;
+    
+}
+.bar{
+    margin-left: 20%;
+    margin-top: -2%;
+}
+ul{
+    display: inline;
+    
+    
+    
+}
+li {
+    display: inline-block;
+    list-style: none;
+}
+ a{
+    text-decoration: none;
+    margin-left: 20px;
+    position: relative;
+    top: -40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    
+color: black;
+}
+a.active {
+    color: red ;
+    border-top:solid 2px red  ;
+    
+}
+a:hover{
+    color: red ;
+    border-top:solid 2px red  ;
+    transition: all 0.2s ease;   
+}
+.phone{
+    background-color: red;
+    color: black;
+    padding: 10px;
+    border-radius: 50px;
+}
+.phone:hover{
+    font-size: 17px;
+    transition: all 0.2s ease;
+    color: aliceblue;
+}
+.imgd{
+    position: absolute;
+    left: 50%;
+}
+.hed{
+    margin-bottom:19%;
+}
+.hed h1{
+    position: relative;
+    top: 150px;
+    width: 40%;
+    margin-left: 10%;
+    margin-bottom: 10%;
+    z-index: 100;
+    
+}
+.btn1{
+    margin-left: 15%;
+    background-color: red;
+    color: aliceblue;
+    border-radius: 50px;
+    padding: 10px;
+    z-index: 1000;
+    position: relative;
+    top: 100px;
+}
+.btn1:hover{
+    color: aliceblue;
+    box-shadow:black -1px -2px ;
+    font-size: 17px;
+}
+.btn2{
+    
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    border-radius: 50px;
+    padding: 10px;
+    z-index: 100;
+    position: relative;
+    top: 100px;
+}
+.marche{
+    background-color: #D8D9DA;
+}
+.marche h1{
+    margin-left: 5%;
+    text-align: center;
+    position: relative;
+    top: 30px;
+   
+}
+.par{
+    margin-left: 5%;
+    margin-top: 5%;
+    width: 50%;
+    z-index: 100;
+    font-weight: 600;
+}
+
+.para p{
+    margin-top: 4%;
+    margin-left: 5%;
+    
+    width: 50%;
+    z-index: 100;
+    
+    font-weight: 600;
+}
+.imag{
+    margin-left: 50%;
+    margin-top: -20%;
+    
+}
+.march1{
+    display: inline-flex;
+    
+    color: rgb(138, 138, 138);
+    margin-bottom: 10%;
+   
+}
+.one{
+    margin-left: 5%;
+    text-align: center;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+}
+.one span{
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 70px;
+}
+.two{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+.two span{
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 70px;
+}
+.three{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+.three span{
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 70px;
+}
+.foure{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+.foure span{
+    color: red;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 70px;
+}
+.serves h1{
+    text-align: center;
+    
+    font-weight: 600;
+}
+.serves p{
+    text-align: center;
+    margin-top: 50px;
+    font-weight: 600;
+}
+.serves1{
+    display: inline-flex;
+    margin-top: 50px;
+    color:#D8D9DA;
+    margin-bottom: 10%;
+    margin-bottom: 10%;
+   
+}
+.serves1 img{
+    width: 50%;
+    margin-top: 20%;
+    margin-bottom: 10%;
+    
+}
+.one1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    width: 15%;
+    margin-left: 7%;
+    margin-bottom: 5%;
+    
+}
+.one1 span{
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.two1 span{
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.three1 span{
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.foure1 span{
+    color: black;
+    font-size: 20px;
+    font-weight: bolder;
+}
+.two1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    width: 15%;
+    margin-left: 7%;
+}
+.three1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    width: 15%;
+    margin-left: 7%;
+    font-weight: 500;
+}
+.foure1{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 15px;
+    text-align: center;
+    width: 15%;
+    margin-left: 7%;
+}
+/* Reset some default margin and padding */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+.conneion {
+    padding: 40px;
+    background-color:  #ccc;
+    text-align: center;
+}
+
+.conneion h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.conneion p {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.conneion .inp {
+    display: flex;
+}
+
+.conneion .left, .conneion .right {
+    flex: 1;
+    margin-right: 20px;
+}
+
+.conneion input, .conneion select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.conneion button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    
+}
+
+
+.conneion button[type="submit"]:hover {
+    background-color: #1d76d6;
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.7s ease;
+}
+
+/* Styling for the paper plane icon */
+.conneion button[type="submit"] i {
+    margin-right: 5px;
+}
+
+/* Add some spacing between the input fields on smaller screens */
+@media (max-width: 768px) {
+    .conneion .inp {
+        display: flex;
+        flex-direction: column;
+    }
+    
+    .conneion .left, .conneion .right {
+        margin-right: 0;
+    }
+}

@@ -1,0 +1,111 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: rgb(100,95,95);
+background: linear-gradient(184deg, rgba(100,95,95,1) 50%, rgba(255,255,255,1) 90%);
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.box {
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 350px;
+    padding: 20px;
+    background-color:transparent;
+    text-align: center;
+    margin-left: 15%;
+}
+
+img {
+    
+    width: 40%;
+}
+
+.box label {
+    display: block;
+    text-align: left;
+    margin-bottom: 6px;
+    font-weight: bold;
+    color: #555;
+}
+
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 50px;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: #4682A9;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+input[type="submit"] {
+    background: black;
+    color: white;
+    border: none;
+    width: 35%;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 50px;
+}
+
+
+
+
+
+.boox {
+    position: relative;
+    left: 20%;
+    top: -45%;
+    font-family: 'inknut antiqua';
+
+}
+
+.boox a {
+    margin-left: 20px;
+    color: #ffffff;
+    padding: 5px;
+    border-radius: 50px;
+}
+
+.boox a:hover {
+
+    color: #000000;
+    text-decoration: underline;
+    border-radius: 50px;
+    padding: 5px;
+    transition: all 0.4s ease;
+}
+@media (max-width: 600px) {
+    
+    .boox {
+        position: relative;
+        left: 15%;
+        top: -42%;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    
+    }
+    .boox a {
+        margin-right: 0;
+        margin-top: 10px;
+    }
+}
