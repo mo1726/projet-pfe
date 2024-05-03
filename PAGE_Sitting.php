@@ -47,7 +47,7 @@
             <h1>Information</h1>
             <div class="all-info">
                 <div class="info3">
-                <form method="POST" onsubmit="return confirm('Are you sure you want to delete your account?');">
+                <form method="POST" id="deleteForm">
                     <h6>First Name:</h6>
                     <input type="text" value="<?php echo $row["name"]; ?>" disabled>
                     <h6>Email:</h6>
@@ -78,12 +78,7 @@
     <?php 
 
 if (isset($_POST['DELETE']) && isset($_SESSION['Email'])) {
-    // Check if confirmation is received
-    $confirm = $_POST['confirm']; // Assuming you have a form input with name 'confirm'
-
-    // Ensure both 'DELETE' and 'Email' session variable are set
-    if ($confirm && $confirm === "yes") {
-        // Retrieve the email address from the session
+    
         $Email = $_SESSION['Email'];
 
         // Prepare the SQL statement to delete the row from the client table
@@ -114,8 +109,16 @@ if (isset($_POST['DELETE']) && isset($_SESSION['Email'])) {
         // Confirmation not received or not confirmed
         echo "Confirmation not received or not confirmed.";
     }
-}}}}
+}}}
 ?>
+<script type="text/javascript">
+        document.getElementById('deleteForm').addEventListener('submit', function(event) {
+            var confirmBox = confirm("Are you sure you want to delete your account?");
+            if (confirmBox != true) {
+                event.preventDefault();
+            }
+        });
+    </script>
     </div>
 </div>
 
