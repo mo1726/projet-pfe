@@ -12,7 +12,11 @@
 <body>
 <?php 
     session_start();
-    if (isset($_SESSION['Email'])) {
+    if (!isset($_SESSION['Email'])) {
+        // If not logged in, redirect to login page
+        header('Location: login.php');
+        exit;
+    }
         $Email = $_SESSION['Email'];
         include 'connixen.php';
         
@@ -31,13 +35,13 @@
         <div class="image">
             <img src="image/images.png" alt="">
             <div class="nav_cantent">
-                <a href="" class="Active">
+                <a href="PAGE_Sitting.php" class="Active">
                     <h3><span>Information</span></h3>
                 </a>
-                <a href="" class="desibled">
+                <a href="EDIT_INFO.PHP" class="desibled">
                     <h3>Edit Info</h3>
                 </a>
-                <a href="" class="desibled">
+                <a href="EDIT_PASSWORD.php" class="desibled">
                     <h3>Edit Password</h3>
                 </a>
             </div>
@@ -59,21 +63,23 @@
                     <h6>Last Name:</h6>
                     <input type="text" value="<?php echo $row["Prenom"]; ?>" disabled>
                     <h6>Telephone:</h6>
-                    <input type="text" value="<?php echo $row["phone"]; ?>" disabled>
+                    <input type="text" value="<?php echo "0".$row["phone"]; ?>" disabled>
                     <h6>City:</h6>
                     <input type="text" value="<?php echo $row["City"]; ?>" disabled>
                 </div>
                 
             </div>
             <div class="hello">
-            <a href="login.php">Edit Info</a>
+            <a href="EDIT_INFO.PHP">Edit Info</a>
                <input type="submit" value="DELETE ACC" name='DELETE'>
                <input type="hidden" name="confirm" value="yes">
             </div>
             </form>
             <img src="image/Vector 1.svg" alt="" class='svg'>
-        <button class="logout">Logout</button>
-        </div>
+            <form action="" method="POST">
+    <button class="logout" name="logout">Logout</button>
+</form>
+       
 
     <?php 
 
@@ -105,11 +111,8 @@ if (isset($_POST['DELETE']) && isset($_SESSION['Email'])) {
             // Error preparing the statement
             echo "Error in preparing SQL statement: " . $con->error;
         }
-    } else {
-        // Confirmation not received or not confirmed
-        echo "Confirmation not received or not confirmed.";
-    }
-}}}
+    } 
+}}
 ?>
 <script type="text/javascript">
         document.getElementById('deleteForm').addEventListener('submit', function(event) {
@@ -121,6 +124,20 @@ if (isset($_POST['DELETE']) && isset($_SESSION['Email'])) {
     </script>
     </div>
 </div>
+<?php
+    if(isset($_POST['logout'])){
+        if (session_status() == PHP_SESSION_NONE) {
+            session_start();
+        }
+        
+        $_SESSION = array();
+
+        session_destroy();
+
+        header('Location: login.php');
+        exit;
+    }
+?>
 
 
 

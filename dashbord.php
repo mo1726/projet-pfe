@@ -33,21 +33,63 @@
     <div class="barx">
         <h3>Overview</h3>
         <?php
-        session_start();
-        if (isset($_SESSION['Email'])) {
-            $Email = $_SESSION['Email'];
-            include 'connixen.php';
-            $sqll = "SELECT name, Prenom FROM client WHERE Email=?";
-            $add = $con->prepare($sqll);
-            $add->bind_param("s", $Email);
-            $add->execute();
-            $result = $add->get_result();
+session_start();
+if (isset($_SESSION['Email'])) {
+    $Email = $_SESSION['Email'];
+    include 'connixen.php';
+    $sqll = "SELECT name, Prenom, botique FROM client WHERE Email=?";
+    $add = $con->prepare($sqll);
+    $add->bind_param("s", $Email);
+    $add->execute();
+    $result_client = $add->get_result();
+
+    // Fetching the row from the result set
+    $row_client = $result_client->fetch_assoc();
+
+    // Displaying the client's name if logged in
+    echo "<h4>" .'WELCOME '. $row_client["name"] . ' ' . $row_client['Prenom'] . "</h4>";
+
+    // Now, let's count the number of rows in the `order` table where botique matches client's botique
+    $client_botique = $row_client['botique'];
+    $sql_count_orders = "SELECT COUNT(*) AS order_count FROM `order` WHERE botique = ?";
+    $stmt_count_orders = $con->prepare($sql_count_orders);
+    $stmt_count_orders->bind_param("s", $client_botique);
+    $stmt_count_orders->execute();
+    $result_count_orders = $stmt_count_orders->get_result();
+
+    // Fetching the row from the result set
+    $row_count_orders = $result_count_orders->fetch_assoc();
+
+
     
-            // Fetching the row from the result set
-            $row = $result->fetch_assoc();
-        }
-    ?>
-    <h4>Welcome <?php echo $row["name"] . ' ' . $row['Prenom']; ?></h4>
+
+    // Order complete
+    
+    $sql_count_orders_complete = "SELECT COUNT(Statu) AS count_orders_complete FROM `order` where Statu='Livree' AND botique=?";
+    $stmt_count_orders_complete = $con->prepare($sql_count_orders_complete);
+    $stmt_count_orders_complete->bind_param("s", $client_botique);
+    $stmt_count_orders_complete->execute();
+    $result_count_orders_complete = $stmt_count_orders_complete->get_result();
+    //Fetch result
+    $row_count_orders_complete = $result_count_orders_complete->fetch_assoc();
+    
+    
+    // Order Annule
+    
+    $sql_count_orders_Annule = "SELECT COUNT(Statu) AS count_orders_Annule FROM `order` where Statu='Annule' AND botique=?";
+    $stmt_count_orders_Annule = $con->prepare($sql_count_orders_Annule);
+    $stmt_count_orders_Annule->bind_param("s", $client_botique);
+    $stmt_count_orders_Annule->execute();
+    $result_count_orders_Annule = $stmt_count_orders_Annule->get_result();
+    //Fetch result
+    $row_count_orders_Annule = $result_count_orders_Annule->fetch_assoc();
+    
+} else {
+    // Handle case where user is not logged in
+    echo "<h4>Welcome Ghost</h4>";
+}
+?>
+
         <div class="profile">
             <a href="PAGE_Sitting.php"><img src="image/images.png" alt=""></a>
         </div></div>
@@ -55,17 +97,35 @@
 </div>
 <div class="card-contenar">
 <div class="card">
-    <h1>0</h1>
+    <h1><?php
+    $order_count = $row_count_orders['order_count'];
+    echo "<h1>" . $order_count . "</h1>";
+    
+    
+    
+    ?></h1>
     <img src="image/complete-order-icon-in-flat-style-for-any-projects-vector-35503994-removebg-preview.png" alt="" class="im-card">
     <h3>Total Orders</h3>
 </div>
 <div class="card1">
-    <h1>100</h1>
+<h1><?php
+    $orders_complete = $row_count_orders_complete['count_orders_complete'];
+    echo "<h1>" . $orders_complete . "</h1>";
+    
+    
+    
+    ?></h1>
     <img src="image/124295101-boîte-en-carton-de-vecteur-avec-coche-cargaison-livrée-livraison-vérifiée-livraison-par-e-mail-removebg-preview.png" alt="" class="im-card">
     <h3>Orders Complete</h3>
 </div>
 <div class="card2">
-    <h1>0</h1>
+<h1><?php
+    
+    $orders_Annule = $row_count_orders_Annule['count_orders_Annule'];
+    echo "<h1>" . $orders_Annule . "</h1>";
+    
+    
+    ?></h1>
     <h3>Orders Annule</h3>
     <img src="image/download__4_-removebg-preview.png" alt="" class="im-card">
 </div>

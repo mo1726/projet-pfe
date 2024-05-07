@@ -21,7 +21,7 @@
     }
 </style>
 
-    <link rel="stylesheet" href="Style/ramassage1.css">
+    <link rel="stylesheet" href="Style/ramassage0.css">
 
    
 </head>
@@ -95,12 +95,12 @@
 
 
         <div class="profile">
-            <a href=""><img src="image/images.png" alt=""></a>
+            <a href="PAGE_Sitting.php"><img src="image/images.png" alt=""></a>
         </div></div>
     </div></div>
     <div class="table-ram">
         <div class="nav-inp">
-            <button onclick="openPopup()" id="create" class="element-to-animate" >CREATE RAMASSAGE</button>
+           <button onclick="openPopup()" id="create" class="element-to-animate" >CREATE RAMASSAGE</button>
             <form action="addanother.php" method="post">
             <input type="submit" name="submit" class="element-to-animate" value="CREATE BON DE RAMASSAGE">        </div>
         <?php
@@ -120,6 +120,7 @@ if ($result->num_rows > 0) {
         <th>Prénom</th>
         <th>Adress</th>
         <th>Ville</th>
+        <th>Botique</th>
         <th>Prix</th></tr>";
 
     while ($row = $result->fetch_assoc()) {
@@ -129,8 +130,9 @@ if ($result->num_rows > 0) {
         $email = $row['Tele'];
         $message = $row['Addrese'];
         $limitedMessage = $row['City'];
+        $Botique=$row['Botique'];
         $prix = $row['Prix'];
-        echo "<tr> <td><input type='checkbox' name='checkedRows[]' value='{$id}'></td></td><td>$Id_commande</td><td>$name</td><td>$email</td><td>$message</td><td>$limitedMessage</td><td>$prix</td></tr>";
+        echo "<tr> <td><input type='checkbox' name='checkedRows[]' value='{$id}'></td></td><td>$Id_commande</td><td>$name</td><td>$email</td><td>$message</td><td>$limitedMessage</td><td>$Botique</td><td>$prix</td></tr>";
 
     }}
 
@@ -183,6 +185,7 @@ $result = $con->query($sql);
     <h2>CREATE RAMASSAGE</h2>
     <form action="insert.php" id="formid" method="post">
         <input type="text" id="name" name="name" required placeholder="FULL NAME"><br>
+        <input type="text" id="Botique" name="Botique" required placeholder="Botique"><br>
         <input type="text" id="tele" name="tele" required placeholder="PHONE NUMBER"><br>
         <select name="city" id="city" name='city'>
                         <option value="">CITY</option>

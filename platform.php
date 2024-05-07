@@ -138,7 +138,7 @@
 </div>
 
 <?php
-include"connixen.php";
+include "connixen.php";
 
 if (isset($_POST['btn'])) {
     $nom = $_POST['nom'];
@@ -150,18 +150,37 @@ if (isset($_POST['btn'])) {
     $city = $_POST['city'];
     $confirm = $_POST['confirm'];
 
-    $stmt = $con->prepare("INSERT INTO client (name, Prenom, botique, phone, Password, Email, City, Confirm) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("ssssssss", $nom, $prenom, $boutique, $phone, $password, $email, $city, $confirm);
-    if (!$stmt->execute()) {
-        header('location:login.php');
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-    $stmt->close();
-    
-}
+    // Check if email or boutique already exist in the database
+    $checkStmt = $con->prepare("SELECT * FROM client WHERE Email = ? OR botique = ?");
+    $checkStmt->bind_param("ss", $email, $boutique);
+    $checkStmt->execute();
+    $checkResult = $checkStmt->get_result();
 
+    if ($checkResult->num_rows > 0 ) {
+        // If email or boutique already exist, display an error message
+        echo "This email or boutique already exists.";
+    } else {
+        // If email or boutique doesn't exist, proceed with the insertion
+        $stmt = $con->prepare("INSERT INTO client (name, Prenom, botique, phone, Password, Email, City, Confirm) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("ssssssss", $nom, $prenom, $boutique, $phone, $password, $email, $city, $confirm);
+
+        if ($stmt->execute()) {
+            // If insertion is successful, redirect to the login page
+            header('location: login.php');
+        } else {
+            // If there's an error during execution, print the error
+            echo "Error: " . $stmt->error;
+        }
+
+        // Close the prepared statement
+        $stmt->close();
+    }
+
+    // Close the check statement
+    $checkStmt->close();
+}
 ?>
+
 
 
 

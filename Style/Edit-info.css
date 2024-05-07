@@ -7,7 +7,7 @@
 }
 
 body {
-    background-color: rgb(251, 251, 251);
+    background-color: rgb(255, 255, 255);
 }
 
 .contener {
@@ -165,4 +165,21 @@ transition: 0.6s ease-in-out;
     position: absolute;
     bottom: 0;
     right: 0;
+}
+.message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Define styles for success message */
+.success {
+    background-color: #dff0d8; /* Light green */
+    color: #3c763d; /* Dark green */
+}
+
+/* Define styles for error message */
+.error {
+    background-color: #f2dede; /* Light red */
+    color: #a94442; /* Dark red */
 }
