@@ -18,7 +18,7 @@
             <li><a href="" class="active">ACCUEIL</a></li>
             <li><a href="#marche">COMMENT ça MARCHE</a></li>
             <li><a href="#serves">SERVICES</a></li>
-            <li><a href="">TARIFS</a></li>
+            <!-- <li><a href="">TARIFS</a></li> -->
             <li><a href="">ESPACE CLIENT</a></li>
             <li><a href="">DEVENIR CLIENT</a></li>
         </ul>
@@ -74,17 +74,17 @@
         <p>La société ADALOU DELIVERY mis à votre disposition une large équipe professionnelle pour vous aider sur le
             ramassage, la livraison, le retour des fonds.</p>
         <div class="inp">
-            <form action="" method="post">
+        <form action="" method="post">
             <div class="left">
-                <input type="text" placeholder="Nom" name="nom">
-                <input type="text" placeholder="prenom" name='prenom'>
-                <input type="text" placeholder="Nom de botique" name="nom botique">
+                <input type="text" placeholder="First Name" name="nom">
+                <input type="text" placeholder="Last Name" name='prenom'>
+                <input type="text" placeholder="Botique Name" name="nom botique">
                 <input type="email" placeholder="Email" name='email'>
-                <input type="text" placeholder="TELEPHONE" name="phone">
+                <input type="text" placeholder="Phone" name="phone">
                 <input type="password" placeholder="PASSWORD" name="password">
                 <input type="password" placeholder="CONFIRM PASSWORD" name='confirm'>
                 <select name="city" id="city" name='city'>
-                        <option value="">Choisissez une ville</option>
+                        <option value="">Select City</option>
                         <option value="Agadir">Agadir</option>
                         <option value="Al Hoceima">Al Hoceima</option>
                         <option value="Azrou">Azrou</option>

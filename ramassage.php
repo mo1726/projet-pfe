@@ -4,24 +4,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="website icon"  type="png" href="image/MD-removebg-preview.png">
-    <style>
-    .next {
-        display: inline-block;
-        padding: 8px 16px;
-        text-decoration: none;
-        color: #000;
-        background-color: #f2f2f2;
-        border: 1px solid #ccc;
-        border-radius: 4px;
-        margin: 0 5px;
-    }
+   
 
-    .next:hover {
-        background-color: #ddd;
-    }
-</style>
-
-    <link rel="stylesheet" href="Style/ramassage0.css">
+    <link rel="stylesheet" href="Style/ramassage1.css">
 
    
 </head>
@@ -42,7 +27,7 @@
         
     
     <div class="barx">
-    <h3>Overview</h3>
+    
     <?php
     session_start();
     
@@ -99,10 +84,28 @@
         </div></div>
     </div></div>
     <div class="table-ram">
+    <?php
+    if(isset($_GET['success']) && $_GET['success'] == 1) {
+        echo '<div class="success-message"> deleted successfully!</div>';
+    }
+    ?>
         <div class="nav-inp">
            <button onclick="openPopup()" id="create" class="element-to-animate" >CREATE RAMASSAGE</button>
-            <form action="addanother.php" method="post">
-            <input type="submit" name="submit" class="element-to-animate" value="CREATE BON DE RAMASSAGE">        </div>
+           
+            
+            <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
+            <div id="Delete"><form action="DELETE_RAMASSAGE.php" method="post">
+                <input type="submit" name="Delete"  class="element-to-animate" value="DELETE RAMASSAGE"> </div>
+               </div>
+
+            <table>
+    <tr><th></th><th>ID COMMONDE</th>
+        <th>Name</th>
+        <th>Prénom</th>
+        <th>Adress</th>
+        <th>Ville</th>
+        <th>Botique</th>
+        <th>Prix</th></tr>
         <?php
 include "connixen.php";
 
@@ -114,14 +117,7 @@ $sql = "SELECT * FROM ramassage ";
 $result = $con->query($sql);
 
 if ($result->num_rows > 0) {
-    echo "<table>";
-    echo "<tr><th></th><th>ID COMMONDE</th>
-        <th>Name</th>
-        <th>Prénom</th>
-        <th>Adress</th>
-        <th>Ville</th>
-        <th>Botique</th>
-        <th>Prix</th></tr>";
+    
 
     while ($row = $result->fetch_assoc()) {
         $id=$row["ID"];
@@ -135,10 +131,13 @@ if ($result->num_rows > 0) {
         echo "<tr> <td><input type='checkbox' name='checkedRows[]' value='{$id}'></td></td><td>$Id_commande</td><td>$name</td><td>$email</td><td>$message</td><td>$limitedMessage</td><td>$Botique</td><td>$prix</td></tr>";
 
     }}
+    else {
+        echo "<tr><td colspan='8'>Aucune donnée trouvée</td></tr>";
+    }
 
-    echo "</table>";
+    
     ?>
-    </form>
+    </form></form></table>
 <?php
 
 $records_per_page = 9; // Number of records to display per page

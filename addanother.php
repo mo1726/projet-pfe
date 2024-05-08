@@ -36,3 +36,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkedRows'])) {
     header('Location: ramassage.php'); // Redirect if the form was not submitted correctly.
 }
 ?>
+

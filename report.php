@@ -18,7 +18,7 @@
             <a href="dashbord.php"><img src="image/arrow-left-5-svgrepo-com.png" alt=""> </a>
         
             <form id="contactForm" method="post" action="">
-        <label for="name">Name:</label>
+        <label for="name">Botique Name:</label>
         <input type="text" id="name" name="name" required>
 
         <label for="email">Email:</label>
@@ -52,7 +52,7 @@
 
         if ($result->num_rows > 0) {
             echo "<table>";
-            echo "<tr><th>ID</th><th>Nom Boutique</th><th>Email</th><th>Message</th></tr>";
+            echo "<tr><th>ID</th><th>Botique Name</th><th>Email</th><th>Message</th></tr>";
 
             while ($row = $result->fetch_assoc()) {
                 $id = $row['id'];
@@ -115,7 +115,9 @@
 
         if ($stmt->execute()) {
             
-            echo '<script>
+           
+            header("Location: report.php");
+             echo '<script>
                 document.getElementById("formMessage").innerText = "Form submitted successfully.";
                 document.getElementById("formMessage").style.color = "green";
                 $(document).ready()
