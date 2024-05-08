@@ -81,11 +81,11 @@ if (isset($_POST['logout'])) {
                 <a href="PAGE_Sitting.php" class="desibled">
                     <h3>Information</h3>
                 </a>
-                <a href="EDIT_INFO.PHP" class="Active">
-                    <h3><span>Edit Info</span></h3>
+                <a href="EDIT_INFO.PHP" class="desibled">
+                    <h3>Edit Info</h3>
                 </a>
-                <a href="EDIT_PASSWORD.php" class="desibled">
-                    <h3>Edit Password</h3>
+                <a href="EDIT_PASSWORD.php" class="Active">
+                    <h3><span>Edit Password</span></h3>
                 </a>
             </div>
         </div>
