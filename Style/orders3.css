@@ -78,8 +78,8 @@ body{
     height: 100vh;
     border: none;
     position: fixed;
-    
-    
+    display: flex;
+    flex-direction: column;
 }
 .nav-logo {
     width: 100;
@@ -162,50 +162,47 @@ th {
 }
 
 .nav-inp {
-    display: grid;
-    grid-template-columns: 20% 20% auto;
-    grid-gap: 5px;
-    margin-bottom: -50%;
-    margin-top: 2%;
-    
-    
+  display: grid;
+  grid-template-columns: 20% 20% auto;
+  grid-gap: 5px;
+  margin-bottom: -50%;
+  margin-top: 2%;
+  
+  
 }
 
 .nav-inp form {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 10px;
-    
+  display: grid;
+  grid-template-columns: auto auto;
+  grid-gap: 10px;
+  
 }
 
 .table-ram {
-    position: relative;
-    left: 13.5%;
-    width: 86.5%;
-    
+  position: relative;
+  left: 13.5%;
+  width: 86.5%;
+  
 }
-
-
-
 .nav-inp button,.nav-inp input[type="submit"] {
-    padding: 10px;
-    font-weight: bold;
-    background-color: #a8a8a8;
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px;
+  font-weight: bold;
+  background-color: #a8a8a8;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 
 .nav-inp button:hover,.nav-inp input[type="submit"]:hover {
-    background-color: #7a7a7a; /* Darker background color on hover */
+  background-color: #7a7a7a; /* Darker background color on hover */
 }
 
 
 
 .element-to-animate {
-    animation: loop 1s ease-in infinite; 
+  animation: loop 1s ease-in infinite; 
 }
 
 
@@ -215,53 +212,39 @@ th {
 
 
 @keyframes loop {
-    from {
-        background-color: #a8a8a8;
-    }
-    to {
-        background-color: #4f4f4f;
-    }
+  from {
+      background-color: #a8a8a8;
+  }
+  to {
+      background-color: #4f4f4f;
+  }
 }
 
-    .status-form {
-        display: inline-block;
-    }
+  .status-form {
+      display: inline-block;
+  }
 
-    .status-form select {
-        padding: 5px;
-        font-size: 14px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-    }
+  .status-form select {
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  }
 
-    .status-form input[type="submit"] {
-        padding: 5px 10px;
-        font-size: 14px;
-        margin-top: 7%;
-        margin-left: 14px;
-        background-color: #007bff;
-        color: #fff;
-        border: none;
-        border-radius: 3px;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        justify-items: center;
-    }
+  .status-form input[type="submit"] {
+      padding: 5px 10px;
+      font-size: 14px;
+      margin-top: 7%;
+      margin-left: 14px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+  }
 
 
 
-.searsh{
-    
-    height: 30px;
-    margin-left: 50%;
-    margin-right: 5%;
-}
-.searsh input[type="text"]{
-    width: 100%;
-    
-}
-.searsh input[type="submit"]{
-    width: 100%;
-    
-}

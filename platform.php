@@ -166,7 +166,7 @@ if (isset($_POST['btn'])) {
 
         if ($stmt->execute()) {
             // If insertion is successful, redirect to the login page
-            header('location: login.php');
+            
         } else {
             // If there's an error during execution, print the error
             echo "Error: " . $stmt->error;

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Style/orders2.css">
+    <link rel="stylesheet" href="Style/orders3.css">
     <link rel="website icon" type="png" href="image/MD-removebg-preview.png">
 </head>
 
@@ -48,12 +48,13 @@
             </div>
         </div>
     </div>
-    <div class="buttons2">
-        <button type="submit" class='element-to-animate'>DELETE THE ORDER</button>
-        <input type="button" value="hello">
-    </div>
+    
     <div class="table-ram">
         <div class="nav-inp">
+        <button type="submit" class='element-to-animate'>DELETE THE ORDER</button>
+            <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
+            
+            
         </div>
         <table>
             <tr>
@@ -68,6 +69,7 @@
                 <th>Statu</th>
             </tr>
             <?php
+            
             if ($result_orders->num_rows > 0) {
                 while ($row = $result_orders->fetch_assoc()) {
                     echo "<tr>";
@@ -88,37 +90,7 @@
             ?>
         </table>
     </div>
-    <?php
-
-$records_per_page = 9; // Number of records to display per page
-$page = isset($_GET['page']) ? $_GET['page'] : 1; // Get current page number, default to 1 if not set
-
-// Calculate the offset
-$offset = ($page - 1) * $records_per_page;
-
-$sql = "SELECT * FROM ramassage LIMIT $offset, $records_per_page";
-$result = $con->query($sql);
-    // Pagination links
-    $sql = "SELECT COUNT(*) AS total FROM ramassage";
-    $result_count = $con->query($sql);
-    $row_count = $result_count->fetch_assoc()['total'];
-
-    // Check if there are more records
-    if ($row_count > $records_per_page * $page) {
-        $nextPage = $page + 1;
-        $lastPage = $page - 1;
-
-        if($lastPage==0){
-            echo "<a href='ramassage.php?page=$lastPage' id='last' style='display: inline-block; padding: 8px 16px; text-decoration: none; color: #fff; background-color: #007bff; border: 1px solid #007bff; border-radius: 4px; margin: 10px 5px;pointer-events: none; /* désactive les événements de souris */
-            cursor: not-allowed;' >$lastPage Last Page</a>";
-        }
-        echo "<a href='ramassage.php?page=$nextPage' id='next' style='display: inline-block; padding: 8px 16px; text-decoration: none; color: #fff; background-color: #007bff; border: 1px solid #007bff; border-radius: 4px; margin: 10px 5px;'>$nextPage Next Page</a>";
-
-    }
-
-
-
-?>
+    
 </body>
 
 </html>

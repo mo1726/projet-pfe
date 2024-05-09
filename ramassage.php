@@ -6,7 +6,7 @@
     <link rel="website icon"  type="png" href="image/MD-removebg-preview.png">
    
 
-    <link rel="stylesheet" href="Style/ramassage1.css">
+    <link rel="stylesheet" href="Style/ramassage0.css">
 
    
 </head>
@@ -66,16 +66,11 @@
             // Error in preparing SQL statement
             echo "Error in preparing SQL statement.";
         }
-        
+    }
         // Close prepared statement
         $stmt->close();
         
-        // Close database connection
-        $con->close();
-    } else {
-        // 'Email' session variable not set
-        echo "<h4>Welcome Guest</h4>";
-    }
+    
     ?>
 
 
@@ -93,9 +88,11 @@
            <button onclick="openPopup()" id="create" class="element-to-animate" >CREATE RAMASSAGE</button>
            
             
-            <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
-            <div id="Delete"><form action="DELETE_RAMASSAGE.php" method="post">
-                <input type="submit" name="Delete"  class="element-to-animate" value="DELETE RAMASSAGE"> </div>
+           <form action="addanother.php" method="post">
+        <input type="submit" name="submit" class="element-to-animate" value="CREATE BON DE RAMASSAGE">
+        <form action="DELETE_RAMASSAGE.php" method="post">
+        <input type="submit" name="Delet" class="element-to-animate" value="Delete  RAMASSAGE">
+   
                </div>
 
             <table>
