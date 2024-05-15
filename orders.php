@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Style/orders3.css">
+    <link rel="stylesheet" href="Style/orders2.css">
     <link rel="website icon" type="png" href="image/MD-removebg-preview.png">
 </head>
 
@@ -50,8 +50,20 @@
     </div>
     
     <div class="table-ram">
+        <?php
+    if(isset($_GET['success']) && $_GET['success'] == 1) {
+        echo '<div class="success-message"> deleted successfully!</div>';
+    }
+    ?>
+        <?php
+    if(isset($_GET['Fatal']) && $_GET['Fatal'] == 1) {
+        echo '<div class="Fatal-message"> deleted successfully!</div>';
+    }
+    ?>
         <div class="nav-inp">
-        <button type="submit" class='element-to-animate'>DELETE THE ORDER</button>
+            <form action="DELETE_Order.php" method="post">
+        <button type="submit" name="Delete" class='element-to-animate'>DELETE THE ORDER</button>
+        <form action="" method="post">
             <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
             
             
@@ -85,10 +97,10 @@
                     echo "</tr>";
                 }
             } else {
-                echo "<tr><td colspan='6'>Aucune donnée trouvée</td></tr>";
+                echo "<tr><td colspan='9'>Aucune donnée trouvée</td></tr>";
             }
             ?>
-        </table>
+       </form></form> </table>
     </div>
     
 </body>

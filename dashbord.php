@@ -10,6 +10,8 @@
     <link rel="website icon"  type="png" href="image/MD-removebg-preview.png">
     
 </head>
+
+
 <body>
     <div class="contner">
     <div class="nav-bar" id="navBar">
@@ -130,6 +132,41 @@ if (isset($_SESSION['Email'])) {
     <img src="image/download__4_-removebg-preview.png" alt="" class="im-card">
 </div>
 </div>
+<?php
+
+$currentMonth = date('m');
+$currentYear = date('Y');
+
+// Prepare the SQL query to fetch data for each month
+$sql = "SELECT MONTH(date) AS month, YEAR(date) AS year, 
+               SUM(CASE WHEN Statu = 'Livree' THEN 1 ELSE 0 END) AS delivered_count,
+               SUM(CASE WHEN Statu = 'Annule' THEN 1 ELSE 0 END) AS canceled_count,
+               COUNT(*) AS total_orders
+        FROM `order`
+        WHERE botique = ? AND YEAR(date) = ?
+        GROUP BY YEAR(date), MONTH(date)
+        ORDER BY YEAR(date), MONTH(date)";
+
+$stmt = $con->prepare($sql);
+$stmt->bind_param("si", $client_botique, $currentYear);
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Initialize arrays to hold the data
+$labels = [];
+$deliveredData = [];
+$canceledData = [];
+$totalOrdersData = [];
+
+// Fetching and storing data for the chart
+while ($row = $result->fetch_assoc()) {
+    $labels[] = date('F Y', mktime(0, 0, 0, $row['month'], 1, $row['year']));
+    $deliveredData[] = $row['delivered_count'];
+    $canceledData[] = $row['canceled_count'];
+    $totalOrdersData[] = $row['total_orders'];
+}
+?>
+
 <canvas id="livreeChart" style="width: 100%;" height="300"></canvas>
 <script>
     function generateRandomDeliveryData(numMonths) {
@@ -162,35 +199,51 @@ if (isset($_SESSION['Email'])) {
     var numMonths = 8; // Number of months to display initially
     var deliveryData = generateRandomDeliveryData(numMonths);
     
-    var data = {
-        labels: generateMonthLabels(d.getMonth(), d.getFullYear(), numMonths),
-        datasets: [{
-            label: 'Colis Livrés',
-            data: deliveryData,
-            backgroundColor: 'rgba(75, 192, 192, 0.2)',
-            borderColor: 'rgba(75, 192, 192, 1)',
-            borderWidth: 1
-        }]
-    };
+   // Sample data for the bar chart
+// Sample data for the bar chart
+var data = {
+    labels: <?php echo json_encode($labels); ?>,
+    datasets: [{
+        label: 'Orders Delivered',
+        data: <?php echo json_encode($deliveredData); ?>,
+        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+        borderColor: 'rgba(75, 192, 192, 1)',
+        borderWidth: 1
+    }, {
+        label: 'Orders Canceled',
+        data: <?php echo json_encode($canceledData); ?>,
+        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+        borderColor: 'rgba(255, 99, 132, 1)',
+        borderWidth: 1
+    }, {
+        label: 'Total Orders',
+        data: <?php echo json_encode($totalOrdersData); ?>,
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1
+    }]
+};
 
-    // Configuration options
-    var options = {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
+
+// Configuration options
+var options = {
+    scales: {
+        y: {
+            beginAtZero: true
         }
-    };
+    }
+};
 
-    // Get the canvas element
-    var ctx = document.getElementById('livreeChart').getContext('2d');
+// Get the canvas element
+var ctx = document.getElementById('livreeChart').getContext('2d');
 
-    // Create the bar chart
-    var myBarChart = new Chart(ctx, {
-        type: 'bar',
-        data: data,
-        options: options
-    });
+// Create the bar chart
+var myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: options
+});
+
 
     // Function to generate month labels
     function generateMonthLabels(startMonthIndex, startYear, numMonths) {

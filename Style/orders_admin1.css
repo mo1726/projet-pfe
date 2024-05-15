@@ -164,7 +164,7 @@ th {
 .nav-inp {
     display: grid;
     grid-template-columns: 20% 20% auto;
-    grid-gap: 5px;
+    
     margin-bottom: -50%;
     margin-top: 2%;
     
@@ -173,15 +173,15 @@ th {
 
 .nav-inp form {
     display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 10px;
+    grid-template-columns: auto auto auto;
+    grid-gap: 1px;
     
 }
 
 .table-ram {
     position: relative;
     left: 13.5%;
-    width: 86.5%;
+    width: 85.8%;
     
 }
 
@@ -264,4 +264,23 @@ th {
 .searsh input[type="submit"]{
     width: 100%;
     
+}
+/* Style for success message */
+.success-message {
+    background-color: #d4edda; /* Green background */
+    color: #155724; /* Dark green text */
+    padding: 10px; /* Padding around the message */
+    margin-bottom: 10px; /* Margin below the message */
+    border: 1px solid #c3e6cb; /* Border color */
+    border-radius: 5px; /* Rounded corners */
+}
+
+/* Style for fatal message */
+.Fatal-message {
+    background-color: #f8d7da; /* Red background */
+    color: #721c24; /* Dark red text */
+    padding: 10px; /* Padding around the message */
+    margin-bottom: 10px; /* Margin below the message */
+    border: 1px solid #f5c6cb; /* Border color */
+    border-radius: 5px; /* Rounded corners */
 }

@@ -15,7 +15,11 @@
 <?php
 session_start();
 
-    
+if (!isset($_SESSION['Email'])) {
+    // If not logged in, redirect to login page
+    header('Location: login.php');
+    exit;
+}
     include 'connixen.php';
     
 
@@ -98,44 +102,79 @@ session_start();
             <img src="image/download__4_-removebg-preview.png" alt="" class="im-card">
         </div>
 </div>
+<?php
+include 'connixen.php';
+
+// Error handling for database connection
+if ($con->connect_error) {
+    die("Connection failed: " . $con->connect_error);
+}
+
+// Get current year
+$currentYear = date('Y');
+
+// Prepare the SQL query to fetch data for each month
+$sql = "SELECT MONTH(date) AS month, YEAR(date) AS year, 
+               SUM(CASE WHEN Statu = 'Livree' THEN 1 ELSE 0 END) AS delivered_count,
+               SUM(CASE WHEN Statu = 'Annule' THEN 1 ELSE 0 END) AS canceled_count,
+               COUNT(*) AS total_orders
+        FROM `order`
+        WHERE YEAR(date) = ?
+        GROUP BY YEAR(date), MONTH(date)
+        ORDER BY YEAR(date), MONTH(date)";
+
+// Prepare and execute the statement
+if ($stmt = $con->prepare($sql)) {
+    $stmt->bind_param("i", $currentYear);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    // Initialize arrays to hold the data
+    $labels = [];
+    $deliveredData = [];
+    $canceledData = [];
+    $totalOrdersData = [];
+
+    // Fetching and storing data for the chart
+    while ($row = $result->fetch_assoc()) {
+        $labels[] = date('F Y', mktime(0, 0, 0, $row['month'], 1, $row['year']));
+        $deliveredData[] = $row['delivered_count'];
+        $canceledData[] = $row['canceled_count'];
+        $totalOrdersData[] = $row['total_orders'];
+    }
+} else {
+    echo "Error in preparing statement: " . $con->error;
+}
+
+// Close the statement and connection
+$stmt->close();
+$con->close();
+?>
+
+<!-- HTML Canvas and JavaScript Chart.js code -->
 <canvas id="livreeChart" style="width: 100%;" height="300"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>
-    function generateRandomDeliveryData(numMonths) {
-        var data = [11,29,35,75,26, 71,98,29,];
-        for (var i = 0; i < numMonths; i++) {
-            data.push(Math.floor(Math.random() * 50) + 1); // Random value between 1 and 50 for demonstration
-        }
-        return data;
-    }
-
-    // Function to add a new month and remove the last month
-    function updateChartData(chart, newMonth) {
-        var currentData = chart.data.datasets[0].data;
-        var currentLabels = chart.data.labels;
-
-        // Remove the first element (oldest month)
-        currentData.shift();
-        currentLabels.shift();
-
-        // Add a new month
-        currentData.push(newMonth);
-        currentLabels.push(getMonthYear(new Date().getMonth(), new Date().getFullYear()));
-
-        chart.update(); // Update the chart to reflect changes
-    }
-
     // Sample data for the bar chart
-    var d = new Date();
-    var numMonths = 8; // Number of months to display initially
-    var deliveryData = generateRandomDeliveryData(numMonths);
-    
     var data = {
-        labels: generateMonthLabels(d.getMonth(), d.getFullYear(), numMonths),
+        labels: <?php echo json_encode($labels); ?>,
         datasets: [{
-            label: 'Colis Livrés',
-            data: deliveryData,
+            label: 'Orders Delivered',
+            data: <?php echo json_encode($deliveredData); ?>,
             backgroundColor: 'rgba(75, 192, 192, 0.2)',
             borderColor: 'rgba(75, 192, 192, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Orders Canceled',
+            data: <?php echo json_encode($canceledData); ?>,
+            backgroundColor: 'rgba(255, 99, 132, 0.2)',
+            borderColor: 'rgba(255, 99, 132, 1)',
+            borderWidth: 1
+        }, {
+            label: 'Total Orders',
+            data: <?php echo json_encode($totalOrdersData); ?>,
+            backgroundColor: 'rgba(54, 162, 235, 0.2)',
+            borderColor: 'rgba(54, 162, 235, 1)',
             borderWidth: 1
         }]
     };
@@ -158,6 +197,20 @@ session_start();
         data: data,
         options: options
     });
+    
+
+
+
+
+
+
+
+
+
+
+
+
+        
 
     // Function to generate month labels
     function generateMonthLabels(startMonthIndex, startYear, numMonths) {

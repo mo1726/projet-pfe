@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="Style/orders_admin.css">
+    <link rel="stylesheet" href="Style/orders_admin1.css">
     <link rel="website icon" type="png" href="image/MD-removebg-preview.png">
 </head>
 
@@ -75,15 +75,28 @@
     </div>
 
     <div class="table-ram">
-
+    <?php
+    if(isset($_GET['success']) && $_GET['success'] == 1) {
+        echo '<div class="success-message"> deleted successfully!</div>';
+    }
+    ?>
+        <?php
+    if(isset($_GET['Fatal']) && $_GET['Fatal'] == 1) {
+        echo '<div class="Fatal-message"> deleted Fatal!</div>';
+    }
+    ?>
         <div class="nav-inp">
-            <button type="submit" class='element-to-animate'>DELETE THE ORDER</button>
-            <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
-            
-            <form method="GET" action="" class="searsh">
-                <input type="text" name="search_query" placeholder="Search by botique or ID">
-                <input type="submit" value="Search">
-            </form>
+        
+        <form action="DELETE_Order_1.php" method="post">
+        <button type="submit" name="Delete" class='element-to-animate'>DELETE THE ORDER</button>
+    </form>
+    <form action="create_bon_ramassage.php" method="post">
+        <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
+    </form>
+    <form method="GET" action="" class="searsh">
+        <input type="text" name="search_query" placeholder="Search by botique or ID">
+        <input type="submit" value="Search">
+    </form>
             
         </div>
         <table>

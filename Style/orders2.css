@@ -141,12 +141,7 @@ margin-top: 15;
     margin-right: 10;
 }
 
-.table-ram {
-    position: relative;
-    left: 13.5%;
-    width: 86.5%;
-    bottom: 500px;
-}
+
 
 table {
     border: 1px solid #000;
@@ -166,21 +161,104 @@ th {
     color: white;
 }
 
-.buttons2{
-  width: 75%;
-  margin-left: 15%;
+.nav-inp form {
+  display: grid;
+  grid-template-columns: 20% 20% ;
+  grid-gap: 10px;
 }
+.nav-inp  {
+  
+  
+  margin-bottom: -50%;
+  margin-top: 2%;
+}
+
+.nav-inp input[type="submit"],
+.nav-inp button {
+  padding: 10px ;
+  font-weight: bold;
+  background-color: #a8a8a8;
+  color: white;
+  
+  cursor: pointer;
+}
+.table-ram {
+  position: relative;
+  left: 13.5%;
+  width: 86.5%;
+  
+}
+
+
+.nav-inp button:hover,.nav-inp input[type="submit"]:hover {
+  background-color: #7a7a7a; /* Darker background color on hover */
+}
+
+
+
 .element-to-animate {
-    animation: loop 1s ease-in infinite; 
+  animation: loop 1s ease-in infinite; 
 }
+
+
+
+
 
 
 
 @keyframes loop {
-    from {
-        background-color: #a8a8a8;
-    }
-    to {
-        background-color: #4f4f4f;
-    }
+  from {
+      background-color: #a8a8a8;
+  }
+  to {
+      background-color: #4f4f4f;
+  }
+}
+
+  .status-form {
+      display: inline-block;
+  }
+
+  .status-form select {
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+  }
+
+  .status-form input[type="submit"] {
+      padding: 5px 10px;
+      font-size: 14px;
+      margin-top: 7%;
+      margin-left: 14px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 3px;
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      justify-items: center;
+  }
+
+
+
+/* Style for success message */
+.success-message {
+  background-color: #d4edda; /* Green background */
+  color: #155724; /* Dark green text */
+  padding: 10px; /* Padding around the message */
+  margin-bottom: 10px; /* Margin below the message */
+  border: 1px solid #c3e6cb; /* Border color */
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Style for fatal message */
+.Fatal-message {
+  background-color: #f8d7da; /* Red background */
+  color: #721c24; /* Dark red text */
+  padding: 10px; /* Padding around the message */
+  margin-bottom: 10px; /* Margin below the message */
+  border: 1px solid #f5c6cb; /* Border color */
+  border-radius: 5px; /* Rounded corners */
 }
