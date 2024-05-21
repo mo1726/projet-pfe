@@ -1,3 +1,37 @@
+<?php
+// login.php (or the file where you have your login logic)
+
+include "connixen.php";
+
+if (isset($_POST['btn'])) {
+    $Email = $_POST['email'];
+    $password = $_POST['password'];
+
+    $stmt = $con->prepare("SELECT * FROM client WHERE Email=? AND Password=?");
+    $stmt->bind_param("ss", $Email, $password);
+    $stmt->execute();
+    $result = $stmt->get_result();
+
+    if ($Email == "mlahrech123@gmail.com" && $password == 260100) {
+        // If the user is an admin
+        session_start();
+        
+        header("Location: admine.php");
+        exit();
+    } elseif ($result->num_rows > 0) {
+        // If the user is a regular user
+        session_start();
+        $_SESSION['Email'] = $Email; // Store Email in session
+        header("Location: dashbord.php");
+        exit();
+    }
+
+    $stmt->close();
+    $con->close();
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,38 +75,7 @@
         
         <a href="platform.php.#conneion">Sign Up</a>
     </div>
-    <?php
-// login.php (or the file where you have your login logic)
-
-include "connixen.php";
-
-if (isset($_POST['btn'])) {
-    $Email = $_POST['email'];
-    $password = $_POST['password'];
-
-    $stmt = $con->prepare("SELECT * FROM client WHERE Email=? AND Password=?");
-    $stmt->bind_param("ss", $Email, $password);
-    $stmt->execute();
-    $result = $stmt->get_result();
-
-    if ($Email == "mlahrech123@gmail.com" && $password == 260100) {
-        // If the user is an admin
-        session_start();
-        $_SESSION['admin'] = true;
-        header("Location: admine.php");
-        exit();
-    } elseif ($result->num_rows > 0) {
-        // If the user is a regular user
-        session_start();
-        $_SESSION['Email'] = $Email; // Store Email in session
-        header("Location: dashbord.php");
-        exit();
-    }
-
-    $stmt->close();
-    $con->close();
-}
-?>
+    
 
 
 </body>

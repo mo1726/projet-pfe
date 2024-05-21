@@ -4,7 +4,7 @@
 include "connixen.php"; // Assuming connixen.php contains your database connection called $con
 
 // Check if form was submitted:
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['checkedRows'])) {
+if (isset($_POST['submit']) && isset($_POST['checkedRows'])) {
     $checkedRows = $_POST['checkedRows'];
 
     try {

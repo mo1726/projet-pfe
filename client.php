@@ -102,50 +102,56 @@ img{
             <th>Actions</th>
         </tr>
         <?php
-        include 'connixen.php';
+include 'connixen.php';
 
-        $checkQuery = "SELECT * FROM client";
-        $result = $con->query($checkQuery);
+if (isset($_POST['delete'])) {
+    $id = $_POST['id'];
+    $deleteQuery = $con->prepare("DELETE FROM client WHERE id=?");
+    $deleteQuery->bind_param("i", $id);
+    if ($deleteQuery->execute()) {
+        header('Location: client.php');
+        exit();
+    } else {
+        echo "Error deleting record: " . $con->error;
+    }
+    $deleteQuery->close();
+}
 
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                $id = $row['id'];
-                $email = $row['Email'];
-                $password = $row['Password'];
-                $username = $row['botique'];
+$checkQuery = "SELECT * FROM client";
+$result = $con->query($checkQuery);
 
-                echo "<tr>";
-                echo "<td>$id</td>";
-                echo "<td>$username</td>";
-                echo "<td>$email</td>";
-                echo "<td>$password</td>";
-                echo "<td>";
-                echo "<form method='POST'>";
-                echo "<input type='hidden' name='Id' value='$id'>";
-                echo "<input type='submit' class='delete-btn' name='delete' value='Delete'>";
-                echo "</form>";
-                echo "<form method='POST' action='Edit_admin.php'>";
-                echo "<input type='hidden' name='Id' value='$id'>";
-                echo "<input type='submit' class='edit-btn' name='edit' value='Edit'>";
-                echo "</form>";
-                echo "</td>";
-                echo "</tr>";
-            }
-        } else {
-            echo "<tr><td colspan='5'>No records found</td></tr>";
-        }
-        if(isset($_POST['delete'])){
-            $id = $_POST['id'];
-            $deleteQuery = "DELETE FROM client WHERE id='$id'";
-            if ($con->query($deleteQuery) === TRUE) {
-                header('location:client.php');
-            } else {
-                echo "Error deleting record: " . $con->error;
-            }
-        }
-    
-        $con->close();
-        ?>
+if ($result->num_rows > 0) {
+    while ($row = $result->fetch_assoc()) {
+        $id = $row['id'];
+        $email = $row['Email'];
+        $password = $row['Password'];
+        $username = $row['botique'];
+
+        echo "<tr>";
+        echo "<td>$id</td>";
+        echo "<td>$username</td>";
+        echo "<td>$email</td>";
+        
+        echo "<td>$password</td>"; 
+        echo "<td>";
+        echo "<form method='POST' style='display:inline;'>";
+        echo "<input type='hidden' name='id' value='$id'>";
+        echo "<input type='submit' class='delete-btn' name='delete' value='Delete'>";
+        echo "</form>";
+        echo "<form method='POST' action='Edit_admin.php' style='display:inline;'>";
+        echo "<input type='hidden' name='id' value='$id'>";
+        echo "<input type='submit' class='edit-btn' name='edit' value='Edit'>";
+        echo "</form>";
+        echo "</td>";
+        echo "</tr>";
+    }
+} else {
+    echo "<tr><td colspan='5'>No records found</td></tr>";
+}
+
+$con->close();
+?>
+
     </table>
 </body>
 </html>

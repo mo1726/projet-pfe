@@ -21,7 +21,7 @@
             <ul>
                 <li><a href="admine.php" class="disactive">HOME</a></li>
                 <li class="active"><a href="Order_admin.php">Orders</a></li>
-                <li><a href="ramassage.php" class="disactive">Ramassage</a></li>
+                <li><a href="" class="disactive">Trafic</a></li>
                 <li><a href="reportadmin.php" class="disactive">Reports</a></li>
             </ul>
         </div>
@@ -85,20 +85,23 @@
         echo '<div class="Fatal-message"> deleted Fatal!</div>';
     }
     ?>
-        <div class="nav-inp">
-        
-        <form action="DELETE_Order_1.php" method="post">
-        <button type="submit" name="Delete" class='element-to-animate'>DELETE THE ORDER</button>
+
+
+<div class="forms">
+    <form method="GET" action="" class="searsh">
+        <input type="text" name="search_query" placeholder="Search by boutique or ID">
+        <input type="submit" value="Search">
     </form>
+       <div class="nav-inp">
     <form action="create_bon_ramassage.php" method="post">
         <input type="submit" name="submit" class="element-to-animate" value="CREATE BON RAMASSAGE"> 
     </form>
-    <form method="GET" action="" class="searsh">
-        <input type="text" name="search_query" placeholder="Search by botique or ID">
-        <input type="submit" value="Search">
-    </form>
-            
-        </div>
+    <form action="DELETE_Order1.php" method="post">
+        <button type="submit" name="Delete" class='element-to-animate'>DELETE THE ORDER</button>
+    
+    
+</div></div>
+
         <table>
             <tr>
                 <th></th>
@@ -143,7 +146,7 @@
                     echo "<td>" . $row['City'] . "</td>";
                     echo "<td>" . $row['Prix'] . "</td>";
                     echo "<td>" . $row['botique'] . "</td>";
-                    echo "<td>";
+                    echo "<td>";echo "</form>";
                     echo "<form method='POST' action='{$_SERVER['PHP_SELF']}' class='status-form'>";
                     echo "<input type='hidden' name='order_id' value='" . $row['ID'] . "'>";
                     echo "<select name='status'>";
@@ -162,7 +165,7 @@
                 echo "<tr><td colspan='9'>Aucune donnée trouvée</td></tr>";
             }
             ?>
-        </table>
+       </table>
     </div>
 
 </body>

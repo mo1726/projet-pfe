@@ -21,7 +21,6 @@
             <li class="active"><a href=""  >HOME</a></li>
             <li ><a href="orders.php" class="disactive">Orders</a></li>
             <li><a href="ramassage.php" class="disactive">Ramassage</a></li>
-            <li><a href="" class="disactive">Products</a></li>
             <li><a href="report.php" class="disactive">Reports</a></li>
         </ul>
     </div>
@@ -90,10 +89,11 @@ if (isset($_SESSION['Email'])) {
     // Handle case where user is not logged in
     echo "<h4>Welcome Ghost</h4>";
 }
+
 ?>
 
         <div class="profile">
-            <a href="PAGE_Sitting.php"><img src="image/images.png" alt=""></a>
+        <a href="PAGE_Sitting.php"><img src='<?php include 'select-image.php';  echo $imagePath; ?>' alt='' ></a>
         </div></div>
     </div>
 </div>
@@ -133,7 +133,7 @@ if (isset($_SESSION['Email'])) {
 </div>
 </div>
 <?php
-
+include 'connixen.php';
 $currentMonth = date('m');
 $currentYear = date('Y');
 

@@ -10,8 +10,25 @@
 </head>
 
 <body>
-<?php 
-    session_start();
+
+
+    <div class="contener">
+    <div class="image">
+        <?php
+    include 'select-image.php'; 
+?>
+
+
+
+<img src='<?php echo $imagePath; ?>' alt='' id='profileImage' onclick="document.getElementById('uploadImage').click();">
+
+<form action="upload_image.php" method="post" enctype="multipart/form-data">
+    <input type="file" name="profileImage" id="uploadImage" style="display:none;" onchange="this.form.submit();">       
+</form>
+
+        <div class="nav_cantent">
+        <?php 
+    
     if (!isset($_SESSION['Email'])) {
         // If not logged in, redirect to login page
         header('Location: login.php');
@@ -30,22 +47,21 @@
             
             if ($result->num_rows > 0) {
                 $row = $result->fetch_assoc();
+                
 ?>
-    <div class="contener">
-        <div class="image">
-            <img src="image/images.png" alt="">
-            <div class="nav_cantent">
-                <a href="PAGE_Sitting.php" class="Active">
-                    <h3><span>Information</span></h3>
-                </a>
-                <a href="EDIT_INFO.PHP" class="desibled">
-                    <h3>Edit Info</h3>
-                </a>
-                <a href="EDIT_PASSWORD.php" class="desibled">
-                    <h3>Edit Password</h3>
-                </a>
-            </div>
+            <a href="PAGE_Sitting.php" class="Active">
+                <h3><span>Information</span></h3>
+            </a>
+            <a href="EDIT_INFO.PHP" class="desibled">
+                <h3>Edit Info</h3>
+            </a>
+            <a href="EDIT_PASSWORD.php" class="desibled">
+                <h3>Edit Password</h3>
+            </a>
         </div>
+    </div>
+
+
 
         <div class="info">
             <h1>Information</h1>

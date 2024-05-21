@@ -16,7 +16,6 @@
                 <li><a href="dashbord.php" class="disactive">HOME</a></li>
                 <li class="active"><a href="orders.php">Orders</a></li>
                 <li><a href="ramassage.php" class="disactive">Ramassage</a></li>
-                <li><a href="" class="disactive">Products</a></li>
                 <li><a href="report.php" class="disactive">Reports</a></li>
             </ul>
         </div>
@@ -39,10 +38,11 @@
                     $stmt_orders->bind_param("s", $client_botique);
                     $stmt_orders->execute();
                     $result_orders = $stmt_orders->get_result();}
+                    include 'select-image.php';
                     ?>
                     <h4>Welcome <?php echo $row_client["name"] . ' ' . $row_client['Prenom']; ?></h4>
                     <div class="profile">
-                        <a href="PAGE_Sitting.php"><img src="image/images.png" alt=""></a>
+                        <a href="PAGE_Sitting.php"><img src='<?php  echo $imagePath; ?>' alt='' ></a>
                     </div>
                 </div>
             </div>

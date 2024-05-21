@@ -166,27 +166,17 @@ th {
     grid-template-columns: 20% 20% auto;
     
     margin-bottom: -50%;
-    margin-top: 2%;
+    margin-top: -3%;
     
     
 }
 
 .nav-inp form {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto;
     grid-gap: 1px;
     
 }
-
-.table-ram {
-    position: relative;
-    left: 13.5%;
-    width: 85.8%;
-    
-}
-
-
-
 .nav-inp button,.nav-inp input[type="submit"] {
     padding: 10px;
     font-weight: bold;
@@ -199,8 +189,18 @@ th {
 
 
 .nav-inp button:hover,.nav-inp input[type="submit"]:hover {
-    background-color: #7a7a7a; /* Darker background color on hover */
+    background-color: #7a7a7a; 
+} 
+
+.table-ram {
+    position: relative;
+    left: 13.5%;
+    width: 85.8%;
+    
 }
+
+
+
 
 
 
@@ -249,21 +249,27 @@ th {
         justify-items: center;
     }
 
+/* Add your CSS styles here */
+
+
 
 
 .searsh{
-    
-    height: 30px;
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 1px;
     margin-left: 50%;
     margin-right: 5%;
 }
 .searsh input[type="text"]{
     width: 100%;
-    
+    height: 150%;
 }
 .searsh input[type="submit"]{
-    width: 100%;
-    
+    width: 50%;
+   
+    height: 150%;
 }
 /* Style for success message */
 .success-message {

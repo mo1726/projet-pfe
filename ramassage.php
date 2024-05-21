@@ -19,7 +19,6 @@
             <li ><a href="dashbord.php"  class="disactive">HOME</a></li>
             <li ><a href="orders.php" class="disactive">Orders</a></li>
             <li class="active"><a href="ramassage.php" >Ramassage</a></li>
-            <li><a href="" class="disactive">Products</a></li>
             <li><a href="report.php" class="disactive">Reports</a></li>
         </ul>
     </div>
@@ -67,15 +66,14 @@
             echo "Error in preparing SQL statement.";
         }
     }
-        // Close prepared statement
-        $stmt->close();
+        
         
     
     ?>
 
 
         <div class="profile">
-            <a href="PAGE_Sitting.php"><img src="image/images.png" alt=""></a>
+        <a href="PAGE_Sitting.php"><img src='<?php include 'select-image.php';  echo $imagePath; ?>' alt='' ></a>
         </div></div>
     </div></div>
     <div class="table-ram">
@@ -90,8 +88,8 @@
             
            <form action="addanother.php" method="post">
         <input type="submit" name="submit" class="element-to-animate" value="CREATE BON DE RAMASSAGE">
-        <form action="DELETE_RAMASSAGE.php" method="post">
-        <input type="submit" name="Delet" class="element-to-animate" value="Delete  RAMASSAGE">
+        <!-- <form action="DELETE_RAMASSAGE1.php" method="post">
+        <input type="submit" name="Delete" class="element-to-animate" value="Delete  RAMASSAGE"> -->
    
                </div>
 

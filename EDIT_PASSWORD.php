@@ -76,7 +76,7 @@ if (isset($_POST['logout'])) {
 <body>
     <div class="contener">
         <div class="image">
-            <img src="image/images.png" alt="">
+        <a href="PAGE_Sitting.php"><img src='<?php include 'select-image.php';  echo $imagePath; ?>' alt='' ></a>
             <div class="nav_cantent">
                 <a href="PAGE_Sitting.php" class="desibled">
                     <h3>Information</h3>

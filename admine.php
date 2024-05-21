@@ -13,13 +13,9 @@
 </head>
 
 <?php
-session_start();
 
-if (!isset($_SESSION['Email'])) {
-    // If not logged in, redirect to login page
-    header('Location: login.php');
-    exit;
-}
+
+
     include 'connixen.php';
     
 
@@ -76,7 +72,7 @@ if (!isset($_SESSION['Email'])) {
         <h3>Overview</h3>
         <h4>WELCOME,Admin</h4>
         <div class="profile">
-            <a href="PAGE_Sitting.php" ><img src="image/images.png" alt=""></a>
+            <a href="login.php" ><img src="image/images.png" alt=""></a>
         </div></div>
     </div>
 </div>

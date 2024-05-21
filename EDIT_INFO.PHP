@@ -14,7 +14,7 @@
 
     <div class="contener">
         <div class="image">
-            <img src="image/images.png" alt="">
+        <a href="PAGE_Sitting.php"><img src='<?php include 'select-image.php';  echo $imagePath; ?>' alt='' ></a>
             <div class="nav_cantent">
                 <a href="PAGE_Sitting.php" class="desibled">
                     <h3>Information</h3>
@@ -32,7 +32,7 @@
             <h1>Edit Info</h1>
 
             <?php 
-            session_start();
+            
             if (!isset($_SESSION['Email'])) {
                 // If not logged in, redirect to login page
                 header('Location: login.php');
